@@ -64,6 +64,10 @@ function formatHour(iso: string): string {
         </div>
       </div>
 
+      <div class="dry-note">
+        👀 That % is the model's odds for sometime in this hour, not a live radar ping — it might not be raining where you're standing right now… but it also might. Such is life... I guess.
+      </div>
+
       <div v-if="report.rain.next6Hours.length" class="hourly">
         <div class="hourly-title">Next 6 hours</div>
         <div class="hourly-row">
@@ -140,6 +144,13 @@ function formatHour(iso: string): string {
   display: flex;
   align-items: center;
   gap: 0.35rem;
+}
+
+.dry-note {
+  font-size: 0.8rem;
+  font-style: italic;
+  opacity: 0.7;
+  line-height: 1.4;
 }
 
 .hourly {
