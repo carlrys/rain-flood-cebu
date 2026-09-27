@@ -53,3 +53,20 @@ export async function lookupHazard(lat: number, lon: number): Promise<HazardInfo
 
   return { level: maxLevel, label: HAZARD_LABELS[maxLevel] || HAZARD_LABELS[0], inCoverageArea: true }
 }
+
+export async function lookupPlaceName(lat: number, lon: number): Promise<string | null> {
+  await ensureLoaded()
+
+  const pt = point([lon, lat])
+
+  for (const feature of boundaryGeojson?.features ?? []) {
+    if (booleanPointInPolygon(pt, feature as any)) {
+      const props = feature.properties ?? {}
+      if (props.barangay) return props.city ? `${props.barangay}, ${props.city}` : props.barangay
+      if (props.adm3_name) return String(props.adm3_name).replace(' (Capital)', '')
+      return null
+    }
+  }
+
+  return null
+}
