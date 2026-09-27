@@ -13,12 +13,13 @@ export interface HourlyRain {
 }
 
 export interface RainInfo {
-  precipitationProbability: number // %
+  precipitationProbability: number // %, current hour
   precipitationMm: number // mm, next hour
   temperatureC: number
   weatherCode: number
   isDay: boolean
   next6Hours: HourlyRain[]
+  todayAverageProbability: number // %, mean across all 24 hours of today
 }
 
 export type HazardLevel = 0 | 1 | 2 | 3 // 0 = none/outside coverage, 1 low, 2 medium, 3 high

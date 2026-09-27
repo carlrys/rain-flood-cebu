@@ -10,6 +10,7 @@ export async function fetchRain(lat: number, lon: number): Promise<RainInfo> {
     longitude: String(lon),
     current: 'temperature_2m,precipitation,weather_code,is_day',
     hourly: 'precipitation_probability,precipitation',
+    daily: 'precipitation_probability_mean',
     forecast_days: '2',
     timezone: 'Asia/Manila',
   })
@@ -50,6 +51,8 @@ export async function fetchRain(lat: number, lon: number): Promise<RainInfo> {
     })
   }
 
+  const todayAverageProbability = data.daily?.precipitation_probability_mean?.[0] ?? 0
+
   return {
     precipitationProbability: probability,
     precipitationMm: current.precipitation ?? 0,
@@ -57,6 +60,7 @@ export async function fetchRain(lat: number, lon: number): Promise<RainInfo> {
     weatherCode: current.weather_code ?? 0,
     isDay: current.is_day === 1,
     next6Hours,
+    todayAverageProbability,
   }
 }
 

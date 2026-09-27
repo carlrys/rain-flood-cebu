@@ -48,7 +48,11 @@ function formatHour(iso: string): string {
       <div class="stats">
         <div class="stat">
           <span class="emoji">{{ rainEmoji }}</span>
-          <span>{{ Math.round(report.rain.precipitationProbability) }}% rain chance</span>
+          <span>{{ Math.round(report.rain.precipitationProbability) }}% chance this hour</span>
+        </div>
+        <div class="stat">
+          <span class="emoji">📊</span>
+          <span>{{ Math.round(report.rain.todayAverageProbability) }}% average today</span>
         </div>
         <div class="stat">
           <span class="emoji">🌡️</span>
