@@ -80,7 +80,7 @@ onMounted(() => {
   <div class="page">
     <header>
       <h1>Will it rain though?</h1>
-      <p class="subtitle">Cebu-only rain + flood-hazard forecast TEST</p>
+      <p class="subtitle">Cebu-only rain + flood-hazard forecast</p>
     </header>
 
     <main>
